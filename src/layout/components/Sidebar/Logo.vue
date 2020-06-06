@@ -1,20 +1,16 @@
 <template>
-  <div class="sidebar-logo-container" :class="{'collapse':collapse}">
+  <div :class="[{'collapse':collapse}, 'sidebar-logo-container']">
     <transition name="sidebarLogoFade">
-      <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo">
-        <h1 v-else class="sidebar-title">{{ title }} </h1>
-      </router-link>
-      <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo">
-        <h1 class="sidebar-title">{{ title }} </h1>
+      <router-link :key="collkey" class="sidebar-logo-link" to="/">
+        <img v-if="logo" :src="logo" alt="logo" class="sidebar-logo">
+        <h1 v-show="!collapse" class="sidebar-title">{{ title }}</h1>
       </router-link>
     </transition>
   </div>
 </template>
 
 <script>
-import Logo from '@/assets/images/logo.png'
+import Logo from '@/assets/images/small_logo.png'
 export default {
   name: 'SidebarLogo',
   props: {
@@ -25,8 +21,9 @@ export default {
   },
   data() {
     return {
-      title: 'ELADMIN-后台管理',
-      logo: Logo
+      logo: Logo,
+      title: process.env.VUE_APP_TITLE,
+      collkey: this.collapse ? 'collapse' : 'expand'
     }
   }
 }
@@ -47,29 +44,32 @@ export default {
   width: 100%;
   height: 50px;
   line-height: 50px;
-  text-align: center;
   overflow: hidden;
 
   & .sidebar-logo-link {
     height: 100%;
     width: 100%;
+    text-align: center;
 
     & .sidebar-logo {
       width: 32px;
       height: 32px;
-      vertical-align: middle;
+      background: #fff;
+      border-radius: 50%;
+      padding: 3px;
       margin-right: 6px;
+      vertical-align: middle;
     }
 
     & .sidebar-title {
       display: inline-block;
-      margin: 0;
       color: #fff;
       font-weight: 600;
-      line-height: 50px;
+      line-height: 32px;
       font-size: 14px;
       font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
       vertical-align: middle;
+      margin-left: 6px;
     }
   }
 

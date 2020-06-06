@@ -71,8 +71,12 @@
       }
     }
 
+    .el-menu-item.is-active {
+      background-color: $menuActiveBg !important;
+      font-weight: bold;
+    }
     .is-active>.el-submenu__title {
-      color: $subMenuActiveText !important;
+      color: $menuActiveText !important;
     }
 
     & .nest-menu .el-submenu>.el-submenu__title,
@@ -83,6 +87,10 @@
       &:hover {
         background-color: $subMenuHover !important;
       }
+    }
+    & .el-menu-item.is-active {
+      background-color: $subMenuActiveBg !important;
+      font-weight: bold;
     }
   }
 
@@ -183,7 +191,7 @@
   .nest-menu .el-submenu>.el-submenu__title,
   .el-menu-item {
     &:hover {
-      // you can use $subMenuHover
+      // you can use $menuHover
       background-color: $menuHover !important;
     }
   }

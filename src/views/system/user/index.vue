@@ -39,6 +39,7 @@
               @keyup.enter.native="crud.toQuery"
             />
             <el-date-picker
+              :picker-options="pickerOptions"
               v-model="query.createTime"
               :default-time="['00:00:00','23:59:59']"
               type="daterange"
@@ -216,6 +217,8 @@ import Treeselect from '@riophae/vue-treeselect'
 import { mapGetters } from 'vuex'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 import { LOAD_CHILDREN_OPTIONS } from '@riophae/vue-treeselect'
+import { calendarShortcuts } from '@/utils/shortcuts'
+
 let userRoles = []
 let userJobs = []
 const defaultForm = { id: null, username: null, nickName: null, gender: '男', email: null, enabled: 'false', roles: [], jobs: [], dept: { id: null }, phone: null }
@@ -268,7 +271,8 @@ export default {
         phone: [
           { required: true, trigger: 'blur', validator: validPhone }
         ]
-      }
+      },
+      pickerOptions: {shortcuts: calendarShortcuts}
     }
   },
   computed: {

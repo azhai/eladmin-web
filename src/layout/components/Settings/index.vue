@@ -24,7 +24,7 @@
       </div>
 
       <div class="drawer-item">
-        <span>菜单UniqueOpened</span>
+        <span>菜单展开一个</span>
         <el-switch v-model="uniqueOpened" class="drawer-switch" />
       </div>
 

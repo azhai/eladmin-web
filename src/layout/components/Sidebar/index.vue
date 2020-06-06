@@ -6,6 +6,7 @@
         :default-active="activeMenu"
         :collapse="isCollapse"
         :background-color="variables.menuBg"
+        :active-background-color="variables.menuActive"
         :text-color="variables.menuText"
         :unique-opened="$store.state.settings.uniqueOpened"
         :active-text-color="variables.menuActiveText"
