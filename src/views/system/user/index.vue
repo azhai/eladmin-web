@@ -38,17 +38,8 @@
               class="filter-item"
               @keyup.enter.native="crud.toQuery"
             />
-            <el-date-picker
+            <date-range-picker
               v-model="query.createTime"
-              :picker-options="pickerOptions"
-              :default-time="['00:00:00','23:59:59']"
-              type="daterange"
-              range-separator=":"
-              size="small"
-              class="date-item"
-              value-format="yyyy-MM-dd HH:mm:ss"
-              start-placeholder="开始日期"
-              end-placeholder="结束日期"
             />
             <el-select
               v-model="query.enabled"
@@ -213,18 +204,18 @@ import rrOperation from '@crud/RR.operation'
 import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
+import DateRangePicker from '@/components/DateRangePicker'
 import Treeselect from '@riophae/vue-treeselect'
 import { mapGetters } from 'vuex'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 import { LOAD_CHILDREN_OPTIONS } from '@riophae/vue-treeselect'
-import { calendarShortcuts } from '@/utils/shortcuts'
 
 let userRoles = []
 let userJobs = []
 const defaultForm = { id: null, username: null, nickName: null, gender: '男', email: null, enabled: 'false', roles: [], jobs: [], dept: { id: null }, phone: null }
 export default {
   name: 'User',
-  components: { Treeselect, crudOperation, rrOperation, udOperation, pagination },
+  components: { Treeselect, crudOperation, rrOperation, udOperation, pagination, DateRangePicker },
   cruds() {
     return CRUD({ title: '用户', url: 'api/users', crudMethod: { ...crudUser }})
   },
@@ -271,8 +262,7 @@ export default {
         phone: [
           { required: true, trigger: 'blur', validator: validPhone }
         ]
-      },
-      pickerOptions: { shortcuts: calendarShortcuts }
+      }
     }
   },
   computed: {
