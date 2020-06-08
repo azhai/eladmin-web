@@ -5,16 +5,9 @@
       <div v-if="crud.props.searchToggle">
         <!-- 搜索 -->
         <el-input v-model="query.appName" clearable placeholder="输入应用名称查询" style="width: 200px" class="filter-item" @keyup.enter.native="crud.toQuery" />
-        <el-date-picker
+        <date-range-picker
           v-model="query.createTime"
-          :default-time="['00:00:00','23:59:59']"
-          type="daterange"
-          range-separator=":"
-          size="small"
           class="date-item"
-          value-format="yyyy-MM-dd HH:mm:ss"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
         />
         <rrOperation />
       </div>
@@ -128,11 +121,12 @@ import rrOperation from '@crud/RR.operation'
 import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
+import DateRangePicker from '@/components/DateRangePicker'
 
 const defaultForm = { id: null, app: { id: null }, deploys: [] }
 export default {
   name: 'Deploy',
-  components: { dForm, fForm, pagination, crudOperation, rrOperation, udOperation },
+  components: { DateRangePicker, dForm, fForm, pagination, crudOperation, rrOperation, udOperation },
   cruds() {
     return CRUD({ title: '部署', url: 'api/deploy', crudMethod: { ...crudDeploy }})
   },

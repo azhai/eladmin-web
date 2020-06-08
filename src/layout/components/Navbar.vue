@@ -22,7 +22,7 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
-          <span style="display:block;" @click="show = true" v-if="false">
+          <span v-if="false" style="display:block;" @click="show = true">
             <el-dropdown-item>
               主题设置
             </el-dropdown-item>
@@ -47,7 +47,6 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
-import Doc from '@/components/Doc'
 import Screenfull from '@/components/Screenfull'
 import SizeSelect from '@/components/SizeSelect'
 import Search from '@/components/HeaderSearch'
@@ -59,8 +58,7 @@ export default {
     Hamburger,
     Screenfull,
     SizeSelect,
-    Search,
-    Doc
+    Search
   },
   data() {
     return {
@@ -74,8 +72,8 @@ export default {
       'device',
       'user',
       'baseApi'
-    ]),
-    /*show: {
+    ])
+    /* show: {
       get() {
         return this.$store.state.settings.showSettings
       },

@@ -40,6 +40,7 @@
             />
             <date-range-picker
               v-model="query.createTime"
+              class="date-item"
             />
             <el-select
               v-model="query.enabled"
@@ -215,7 +216,7 @@ let userJobs = []
 const defaultForm = { id: null, username: null, nickName: null, gender: '男', email: null, enabled: 'false', roles: [], jobs: [], dept: { id: null }, phone: null }
 export default {
   name: 'User',
-  components: { Treeselect, crudOperation, rrOperation, udOperation, pagination, DateRangePicker },
+  components: { DateRangePicker, Treeselect, crudOperation, rrOperation, udOperation, pagination },
   cruds() {
     return CRUD({ title: '用户', url: 'api/users', crudMethod: { ...crudUser }})
   },

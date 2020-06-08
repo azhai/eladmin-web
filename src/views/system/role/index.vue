@@ -5,16 +5,9 @@
       <div v-if="crud.props.searchToggle">
         <!-- 搜索 -->
         <el-input v-model="query.blurry" size="small" clearable placeholder="输入名称或者描述搜索" style="width: 200px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
-        <el-date-picker
+        <date-range-picker
           v-model="query.createTime"
-          :default-time="['00:00:00','23:59:59']"
-          type="daterange"
-          range-separator=":"
-          size="small"
           class="date-item"
-          value-format="yyyy-MM-dd HH:mm:ss"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
         />
         <rrOperation />
       </div>
@@ -135,6 +128,7 @@ import rrOperation from '@crud/RR.operation'
 import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
+import DateRangePicker from '@/components/DateRangePicker'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 import { LOAD_CHILDREN_OPTIONS } from '@riophae/vue-treeselect'
@@ -142,7 +136,7 @@ import { LOAD_CHILDREN_OPTIONS } from '@riophae/vue-treeselect'
 const defaultForm = { id: null, name: null, depts: [], description: null, dataScope: '全部', level: 3 }
 export default {
   name: 'Role',
-  components: { Treeselect, pagination, crudOperation, rrOperation, udOperation },
+  components: { DateRangePicker, Treeselect, pagination, crudOperation, rrOperation, udOperation },
   cruds() {
     return CRUD({ title: '角色', url: 'api/roles', sort: 'level,asc', crudMethod: { ...crudRoles }})
   },
