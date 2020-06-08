@@ -39,8 +39,8 @@
               @keyup.enter.native="crud.toQuery"
             />
             <el-date-picker
-              :picker-options="pickerOptions"
               v-model="query.createTime"
+              :picker-options="pickerOptions"
               :default-time="['00:00:00','23:59:59']"
               type="daterange"
               range-separator=":"
@@ -272,7 +272,7 @@ export default {
           { required: true, trigger: 'blur', validator: validPhone }
         ]
       },
-      pickerOptions: {shortcuts: calendarShortcuts}
+      pickerOptions: { shortcuts: calendarShortcuts }
     }
   },
   computed: {
