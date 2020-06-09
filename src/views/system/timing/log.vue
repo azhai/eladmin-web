@@ -3,10 +3,7 @@
     <!-- 搜索 -->
     <div class="head-container">
       <el-input v-model="query.jobName" clearable size="small" placeholder="输入任务名称搜索" style="width: 200px;" class="filter-item" @keyup.enter.native="toQuery" />
-      <date-range-picker
-        v-model="query.createTime"
-        class="date-item"
-      />
+      <date-range-picker v-model="query.createTime" class="date-item" />
       <el-select v-model="query.isSuccess" placeholder="日志状态" clearable size="small" class="filter-item" style="width: 110px" @change="toQuery">
         <el-option v-for="item in enabledTypeOptions" :key="item.key" :label="item.display_name" :value="item.key" />
       </el-select>
@@ -66,7 +63,6 @@
 <script>
 import crud from '@/mixins/crud'
 import DateRangePicker from '@/components/DateRangePicker'
-
 export default {
   components: { DateRangePicker },
   mixins: [crud],

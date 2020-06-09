@@ -5,10 +5,7 @@
       <div v-if="crud.props.searchToggle">
         <!-- 搜索 -->
         <el-input v-model="query.blurry" clearable size="small" placeholder="模糊搜索" style="width: 200px;" class="filter-item" @keyup.enter.native="toQuery" />
-        <date-range-picker
-          v-model="query.createTime"
-          class="date-item"
-        />
+        <date-range-picker v-model="query.createTime" class="date-item" />
         <rrOperation />
       </div>
       <crudOperation :permission="permission" />
@@ -170,7 +167,7 @@ import DateRangePicker from '@/components/DateRangePicker'
 const defaultForm = { id: null, title: null, menuSort: 999, path: null, component: null, componentName: null, iframe: false, roles: [], pid: 0, icon: null, cache: false, hidden: false, type: 0, permission: null }
 export default {
   name: 'Menu',
-  components: { DateRangePicker, Treeselect, IconSelect, crudOperation, rrOperation, udOperation },
+  components: { Treeselect, IconSelect, crudOperation, rrOperation, udOperation, DateRangePicker },
   cruds() {
     return CRUD({ title: '菜单', url: 'api/menus', crudMethod: { ...crudMenu }})
   },

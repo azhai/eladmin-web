@@ -5,10 +5,7 @@
       <div v-if="crud.props.searchToggle">
         <!--搜索-->
         <el-input v-model="query.filename" clearable size="small" placeholder="输入文件名" style="width: 200px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
-        <date-range-picker
-          v-model="query.createTime"
-          class="date-item"
-        />
+        <date-range-picker v-model="query.createTime" class="date-item" />
         <rrOperation />
       </div>
       <crudOperation :permission="permission">
@@ -98,7 +95,7 @@ import DateRangePicker from '@/components/DateRangePicker'
 
 export default {
   name: 'Pictures',
-  components: { DateRangePicker, pagination, crudOperation, rrOperation },
+  components: { pagination, crudOperation, rrOperation, DateRangePicker },
   cruds() {
     return CRUD({ title: '图片', url: 'api/pictures', crudMethod: { ...crudPic }})
   },
